@@ -2,7 +2,7 @@ function Summary({ bevetel, kiadas }) {
   const egyenleg = bevetel - kiadas
 
   return (
-    <div className="grid grid-cols-3 gap-4 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
       <div className="bg-white rounded-xl p-4 shadow-sm">
         <p className="text-sm text-gray-500 mb-1">Bevétel</p>
         <p className="text-xl font-bold text-green-500">+{bevetel.toLocaleString()} Ft</p>
