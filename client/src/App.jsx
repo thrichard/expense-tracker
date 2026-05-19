@@ -17,6 +17,10 @@ function App() {
     setTranzakciok([...tranzakciok, ujTranzakcio])
   }
 
+  function torol(id) {
+  setTranzakciok(tranzakciok.filter(t => t.id !== id))
+}
+
   const bevetel = tranzakciok
     .filter(t => t.tipus === 'bevetel')
     .reduce((sum, t) => sum + t.osszeg, 0)
@@ -30,7 +34,7 @@ function App() {
       <h1 style={{ padding: '24px' }}>Kiadáskövető</h1>
       <Summary bevetel={bevetel} kiadas={kiadas} />
       <AddTransaction onAdd={hozzaad} />
-      <TransactionList tranzakciok={tranzakciok} />
+      <TransactionList tranzakciok={tranzakciok} onDelete={torol} />
     </div>
   )
 }
