@@ -49,16 +49,18 @@ function App() {
     .reduce((sum, t) => sum + t.osszeg, 0)
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px' }}>
-        <h1>Kiadáskövető</h1>
-        <button onClick={kijelentkezes} style={{ padding: '8px 16px', background: '#ef4444', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-          Kijelentkezés
-        </button>
+    <div className="min-h-screen bg-gray-100">
+      <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">💸 Kiadáskövető</h1>
+          <button onClick={kijelentkezes} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition">
+            Kijelentkezés
+          </button>
+        </div>
+        <Summary bevetel={bevetel} kiadas={kiadas} />
+        <AddTransaction onAdd={hozzaad} />
+        <TransactionList tranzakciok={tranzakciok} onDelete={torol} />
       </div>
-      <Summary bevetel={bevetel} kiadas={kiadas} />
-      <AddTransaction onAdd={hozzaad} />
-      <TransactionList tranzakciok={tranzakciok} onDelete={torol} />
     </div>
   )
 }

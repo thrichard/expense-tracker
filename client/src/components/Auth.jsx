@@ -28,28 +28,32 @@ function Auth({ onLogin }) {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ background: 'white', padding: '32px', borderRadius: '8px', width: '320px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <h2>{mod === 'bejelentkezes' ? 'Bejelentkezés' : 'Regisztráció'}</h2>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="bg-white rounded-xl shadow-sm p-8 w-full max-w-sm flex flex-col gap-4">
+        <h2 className="text-2xl font-bold text-gray-800 text-center">
+          {mod === 'bejelentkezes' ? '👋 Bejelentkezés' : '📝 Regisztráció'}
+        </h2>
         <input
           placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+          className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
         />
         <input
           placeholder="Jelszó"
           type="password"
           value={jelszo}
           onChange={e => setJelszo(e.target.value)}
-          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+          className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
         />
-        {hiba && <p style={{ color: 'red', fontSize: '14px' }}>{hiba}</p>}
-        <button onClick={handleSubmit} style={{ padding: '10px', background: '#4f46e5', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+        {hiba && <p className="text-red-500 text-sm text-center">{hiba}</p>}
+        <button onClick={handleSubmit} className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg text-sm font-medium transition">
           {mod === 'bejelentkezes' ? 'Bejelentkezés' : 'Regisztráció'}
         </button>
-        <p style={{ fontSize: '14px', textAlign: 'center', cursor: 'pointer', color: '#4f46e5' }}
-          onClick={() => setMod(mod === 'bejelentkezes' ? 'regisztracio' : 'bejelentkezes')}>
+        <p
+          className="text-sm text-center text-indigo-500 cursor-pointer hover:underline"
+          onClick={() => setMod(mod === 'bejelentkezes' ? 'regisztracio' : 'bejelentkezes')}
+        >
           {mod === 'bejelentkezes' ? 'Nincs fiókod? Regisztrálj' : 'Van már fiókod? Jelentkezz be'}
         </p>
       </div>
