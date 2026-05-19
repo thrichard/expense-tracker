@@ -1,25 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Summary from './components/Summary'
 import TransactionList from './components/TransactionList'
 import AddTransaction from './components/AddTransaction'
 
-const kezdoAdatok = [
-  { id: 1, nev: 'Fizetés', osszeg: 250000, tipus: 'bevetel', datum: '2026-05-01' },
-  { id: 2, nev: 'Bolt', osszeg: 15000, tipus: 'kiadas', datum: '2026-05-03' },
-  { id: 3, nev: 'Számlák', osszeg: 45000, tipus: 'kiadas', datum: '2026-05-05' },
-  { id: 4, nev: 'Freelance munka', osszeg: 80000, tipus: 'bevetel', datum: '2026-05-10' },
-]
+const API = 'http://localhost:3000/api/tranzakciok'
 
 function App() {
-  const [tranzakciok, setTranzakciok] = useState(kezdoAdatok)
+  const [tranzakciok, setTranzakciok] = useState([])
 
-  function hozzaad(ujTranzakcio) {
-    setTranzakciok([...tranzakciok, ujTranzakcio])
+  useEffect(() => {
+    fetch(API)
+      .then(r => r.json())
+      .then(data => setTranzakciok(data))
+  }, [])
+
+  async function hozzaad(ujTranzakcio) {
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(ujTranzakcio)
+    })
+    const mentett = await res.json()
+    setTranzakciok([...tranzakciok, mentett])
   }
 
-  function torol(id) {
-  setTranzakciok(tranzakciok.filter(t => t.id !== id))
-}
+  async function torol(id) {
+    await fetch(`${API}/${id}`, { method: 'DELETE' })
+    setTranzakciok(tranzakciok.filter(t => t.id !== id))
+  }
 
   const bevetel = tranzakciok
     .filter(t => t.tipus === 'bevetel')
