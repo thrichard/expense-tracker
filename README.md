@@ -20,6 +20,28 @@ Webalkalmazás, amivel nyomon követheted a bevételeidet és kiadásaidat.
 **Auth:** JWT, bcrypt  
 **Deploy:** Netlify
 
+## ai help
+Ötletelés
+Téma választás
+
+Frontend felépítése
+    Props és useState bevezetése hogy az adatok egy helyről jöjjenek
+
+Backend felépítése
+    SQLite adatbázis better-sqlite3-mal
+
+Hibakeresés
+    SQLite felhasznalo_id oszlop hiba javítása (régi db törlése)
+    Netlify build
+
+Design
+    Mobilos reszponzív layout
+
+Deploy
+
+Netlify deploy és build settings konfigurálása
+
+
 ## Indítás
 
 A projekt futtatásához két terminál kell.
