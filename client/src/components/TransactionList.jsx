@@ -1,11 +1,4 @@
-const tranzakciok = [
-  { id: 1, nev: 'Fizetés', osszeg: 250000, tipus: 'bevetel', datum: '2026-05-01' },
-  { id: 2, nev: 'Bolt', osszeg: 15000, tipus: 'kiadas', datum: '2026-05-03' },
-  { id: 3, nev: 'Számlák', osszeg: 45000, tipus: 'kiadas', datum: '2026-05-05' },
-  { id: 4, nev: 'Freelance munka', osszeg: 80000, tipus: 'bevetel', datum: '2026-05-10' },
-]
-
-function TransactionList() {
+function TransactionList({ tranzakciok }) {
   return (
     <div style={{ padding: '0 24px' }}>
       <h2>Tranzakciók</h2>

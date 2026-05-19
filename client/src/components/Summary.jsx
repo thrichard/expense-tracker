@@ -1,6 +1,4 @@
-function Summary() {
-  const bevetel = 250000
-  const kiadas = 180000
+function Summary({ bevetel, kiadas }) {
   const egyenleg = bevetel - kiadas
 
   return (
